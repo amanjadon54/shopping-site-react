@@ -14,6 +14,8 @@ class DisplayWidget extends Component {
         />
         <br></br>
         <Label labelContent={this.props.labelContent} />
+        <Label labelDescription={this.props.labelDescription} />
+        <Label labelSize={this.props.labelSize} />
       </div>
     );
   }

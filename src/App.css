@@ -1,22 +1,3 @@
 .App {
   display: float;
-  padding: 10px;
-}
-
-.widget {
-  height: 195px;
-  width: 165px;
-  border-style: dotted;
-}
-
-.company-logo {
-  height: 80px;
-  width: 80px;
-  text-align: left;
-}
-
-.search {
-  width: 50%;
-  height: 50%;
-  align-items: center;
 }
