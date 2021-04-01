@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import SearchBar from "./components/SearchBar";
 import DisplayWidget from "./components/DisplayWidget";
+import Image from "./components/Image";
 import React, { Component } from "react";
 
 import "./App.css";
@@ -13,8 +14,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Image
+          imageSrc={process.env.PUBLIC_URL + "/company_logo.svg"}
+          imageClassName="company-logo"
+        />
+
+        <hr />
         <SearchBar
           searchBarDefault="search"
+          searchBarClassName="search"
           handleSearchBarEnter={this.handleSearchBarEnter}
         />
         <DisplayWidget
