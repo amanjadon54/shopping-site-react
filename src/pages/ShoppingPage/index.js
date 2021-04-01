@@ -34,18 +34,20 @@ class ShoppingPage extends Component {
           handleSearchBarEnter={this.handleSearchBarEnter}
         />
 
-        {this.state.shoppingData.map((element) => {
-          return (
-            <DisplayWidget
-              labelContent={element.title}
-              labelDescription={element.subTitle}
-              labelSize={element.sizeVariation}
-              imageSrc={element.imageUrl}
-              imageAlt="No image"
-              widgetClassName="widget"
-            />
-          );
-        })}
+        <div class="widgets-div">
+          {this.state.shoppingData.map((element) => {
+            return (
+              <DisplayWidget
+                labelContent={element.title}
+                labelDescription={element.subTitle}
+                labelSize={element.sizeVariation}
+                imageSrc={element.imageUrl}
+                imageAlt="No image"
+                widgetClassName="widget"
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

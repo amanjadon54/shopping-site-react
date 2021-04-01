@@ -6,8 +6,16 @@
 .widget {
   height: 250px;
   width: 170px;
-  border-style: solid;
   margin-top: 10px;
+  border-style: solid;
+  /* display: inline-flex; */
+}
+
+.widgets-div {
+  margin-top: 10px;
+  column-gap: 10px;
+  justify-content: space-between;
+  display: inline-flex;
 }
 
 .company-logo {
