@@ -4,6 +4,7 @@
 }
 
 .widget {
+  flex: 1 0 20%;
   height: 250px;
   width: 170px;
   margin-top: 10px;
@@ -12,10 +13,14 @@
 }
 
 .widgets-div {
+  margin-left: 20px;
+  margin-right: 50px;
   margin-top: 10px;
   column-gap: 10px;
   justify-content: space-between;
-  display: inline-flex;
+  /* display: inline-flex; */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .company-logo {
