@@ -6,7 +6,7 @@ import "./index.css";
 class DisplayWidget extends Component {
   render() {
     return (
-      <div>
+      <div class={this.props.widgetClassName}>
         <Image
           imageSrc={this.props.imageSrc}
           imageAlt={this.props.imageAlt}

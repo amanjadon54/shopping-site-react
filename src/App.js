@@ -21,6 +21,7 @@ class App extends Component {
           labelContent="sample1"
           imageSrc={logo}
           imageAlt="No image"
+          widgetClassName="widget"
         />
       </div>
     );
