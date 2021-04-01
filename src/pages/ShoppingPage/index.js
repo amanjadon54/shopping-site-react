@@ -53,7 +53,7 @@ class ShoppingPage extends Component {
               <DisplayWidget
                 labelContent={element.title}
                 labelDescription={element.subTitle}
-                // labelSize={element.sizeVariation}
+                labelSize={this.fetchSizes(element.sizeVariation)}
                 imageSrc={element.imageUrl}
                 imageAlt="No image"
                 widgetClassName="widget"
@@ -64,5 +64,17 @@ class ShoppingPage extends Component {
       </div>
     );
   }
+
+  fetchSizes = (sizeList) => {
+    debugger;
+    let arr = sizeList.map((element) => {
+      return element.title;
+    });
+
+    const reducer = (previousSizes, currentSize) =>
+      previousSizes + " " + currentSize;
+    const initialValue = "";
+    return arr.reduce(reducer, initialValue);
+  };
 }
 export default ShoppingPage;
