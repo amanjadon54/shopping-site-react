@@ -10,14 +10,27 @@ class ShoppingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shoppingData: [],
+      initialData: [],
+      searchedData: [],
     };
     var data = require("../../data/products-dataset.json");
-    this.state.shoppingData = data;
+    this.state.searchedData = data;
+    this.state.initialData = data;
   }
 
   handleSearchBarEnter = (event) => {
-    alert("button entered");
+    const searchData = event.target.value;
+    const { initialData } = this.state;
+    let updatedList = [];
+    if (searchData === "") {
+      updatedList = initialData;
+    } else {
+      updatedList = initialData.filter((element) =>
+        element.title.includes(searchData)
+      );
+    }
+
+    this.setState({ searchedData: updatedList });
   };
 
   render() {
@@ -35,7 +48,7 @@ class ShoppingPage extends Component {
         />
 
         <div class="widgets-div">
-          {this.state.shoppingData.map((element) => {
+          {this.state.searchedData.map((element) => {
             return (
               <DisplayWidget
                 labelContent={element.title}
