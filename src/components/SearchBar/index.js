@@ -12,6 +12,7 @@ class SearchBar extends React.Component {
     return (
       <input
         className={this.props.searchBarClassName}
+        placeholder={this.props.searchBarDefault}
         value={this.props.searchBarValue}
         onKeyDown={this.handleEnter}
       />

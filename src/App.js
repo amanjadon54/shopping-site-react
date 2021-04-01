@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBar
-          searchBarValue="aman"
+          searchBarDefault="search"
           handleSearchBarEnter={this.handleSearchBarEnter}
         ></SearchBar>
       </div>
