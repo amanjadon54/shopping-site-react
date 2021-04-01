@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import SearchBar from "./components/SearchBar";
+import DisplayWidget from "./components/DisplayWidget";
 import React, { Component } from "react";
 
 import "./App.css";
@@ -15,7 +16,12 @@ class App extends Component {
         <SearchBar
           searchBarDefault="search"
           handleSearchBarEnter={this.handleSearchBarEnter}
-        ></SearchBar>
+        />
+        <DisplayWidget
+          labelContent="sample1"
+          imageSrc={logo}
+          imageAlt="No image"
+        />
       </div>
     );
   }
