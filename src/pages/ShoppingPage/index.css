@@ -1,4 +1,5 @@
 .shopping-page {
+  justify-content: center;
   display: float;
   padding: 10px;
 }
@@ -9,6 +10,7 @@
   width: 170px;
   margin-top: 10px;
   border-style: solid;
+  min-width: 170px;
   /* display: inline-flex; */
 }
 
@@ -18,7 +20,6 @@
   margin-top: 10px;
   column-gap: 10px;
   justify-content: center;
-  /* display: inline-flex; */
   display: flex;
   flex-wrap: wrap;
 }

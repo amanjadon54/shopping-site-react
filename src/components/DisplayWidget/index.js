@@ -10,7 +10,7 @@ class DisplayWidget extends Component {
         <Image
           imageSrc={this.props.imageSrc}
           imageAlt={this.props.imageAlt}
-          imageClassName="widgetClass"
+          imageClassName="imageClass"
         />
         <br></br>
         <Label labelContent={this.props.labelContent} />
