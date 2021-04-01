@@ -13,9 +13,20 @@ class DisplayWidget extends Component {
           imageClassName="imageClass"
         />
         <br></br>
-        <Label labelContent={this.props.labelContent} />
-        <Label labelDescription={this.props.labelDescription} />
-        <Label labelSize={this.props.labelSize} />
+        <Label
+          labelClassName="label-class-title"
+          labelContent={this.props.labelContent}
+        />
+        <br />
+        <Label
+          labelClassName="label-class-desc"
+          labelContent={this.props.labelDescription}
+        />
+        <br />
+        <Label
+          labelClassName="label-class-size"
+          labelContent={this.props.labelSize}
+        />
       </div>
     );
   }

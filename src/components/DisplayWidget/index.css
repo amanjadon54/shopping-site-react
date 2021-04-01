@@ -4,3 +4,17 @@
   margin-top: 5%;
   margin-left: 5%;
 }
+
+.label-class-title {
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+.label-class-desc {
+  margin-left: 5%;
+  display: block;
+}
+
+.label-class-size {
+  margin-left: 5%;
+}

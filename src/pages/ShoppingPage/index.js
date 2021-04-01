@@ -40,7 +40,7 @@ class ShoppingPage extends Component {
               <DisplayWidget
                 labelContent={element.title}
                 labelDescription={element.subTitle}
-                labelSize={element.sizeVariation}
+                // labelSize={element.sizeVariation}
                 imageSrc={element.imageUrl}
                 imageAlt="No image"
                 widgetClassName="widget"
