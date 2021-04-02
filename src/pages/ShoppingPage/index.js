@@ -14,6 +14,7 @@ class ShoppingPage extends Component {
       loading: false,
       page: 0,
       prevY: 0,
+      isTopButtonVisible: false,
     };
   }
 
@@ -31,7 +32,6 @@ class ShoppingPage extends Component {
   };
 
   handleObserver = (entities, observer) => {
-    debugger;
     const y = entities[0].boundingClientRect.y;
     if (this.state.prevY > y) {
       const curPage = this.state.initialData.length / 16;
@@ -39,6 +39,7 @@ class ShoppingPage extends Component {
       this.setState({ page: curPage + 1 });
     }
     this.setState({ prevY: y });
+    this.toggleVisibility();
   };
 
   getPhotos = (page) => {
@@ -78,6 +79,8 @@ class ShoppingPage extends Component {
       margin: "30px",
     };
 
+    const { isTopButtonVisible } = this.state;
+
     // To change the loading icon behavior
     const loadingTextCSS = { display: this.state.loading ? "block" : "none" };
 
@@ -93,7 +96,6 @@ class ShoppingPage extends Component {
           searchBarClassName="search"
           handleSearchBarEnter={this.handleSearchBarEnter}
         />
-
         <div class="widgets-div">
           {this.state.searchedData.map((element) => {
             return (
@@ -108,7 +110,16 @@ class ShoppingPage extends Component {
             );
           })}
         </div>
-
+        <div class="scroll-to-top">
+          {isTopButtonVisible && (
+            <div onClick={() => this.scrollToTop()}>
+              <img
+                src="https://i.postimg.cc/44Ytsk8Z/top-arrow-emoj.png"
+                alt="Go to top"
+              />
+            </div>
+          )}
+        </div>
         <div
           ref={(loadingRef) => (this.loadingRef = loadingRef)}
           style={loadingCSS}
@@ -118,6 +129,25 @@ class ShoppingPage extends Component {
       </div>
     );
   }
+
+  toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      this.setState({
+        isTopButtonVisible: true,
+      });
+    } else {
+      this.setState({
+        isTopButtonVisible: false,
+      });
+    }
+  };
+
+  scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   fetchSizes = (sizeList) => {
     if (sizeList !== undefined) {
