@@ -1,4 +1,3 @@
-import logo from "../../logo.svg";
 import SearchBar from "../../components/SearchBar";
 import DisplayWidget from "../../components/DisplayWidget";
 import Image from "../../components/Image";
@@ -12,11 +11,51 @@ class ShoppingPage extends Component {
     this.state = {
       initialData: [],
       searchedData: [],
+      loading: false,
+      page: 0,
+      prevY: 0,
     };
-    var data = require("../../data/products-dataset.json");
-    this.state.searchedData = data;
-    this.state.initialData = data;
   }
+
+  componentDidMount = () => {
+    debugger;
+    this.setState({ loading: true });
+    this.getPhotos(this.state.page + 1);
+    var options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
+    this.observer = new IntersectionObserver(this.handleObserver, options);
+    this.observer.observe(this.loadingRef);
+  };
+
+  handleObserver = (entities, observer) => {
+    debugger;
+    const y = entities[0].boundingClientRect.y;
+    if (this.state.prevY > y) {
+      const curPage = this.state.initialData.length / 16;
+      this.getPhotos(curPage + 1);
+      this.setState({ page: curPage + 1 });
+    }
+    this.setState({ prevY: y });
+  };
+
+  getPhotos = (page) => {
+    let data = require("../../data/products-dataset.json");
+    let paginatedData = data.slice((page - 1) * 16, page * 16);
+    debugger;
+    let updatedSearchedData = this.state.searchedData;
+    let updatedInitialData = this.state.initialData;
+
+    updatedSearchedData.push(...paginatedData);
+    updatedInitialData.push(...paginatedData);
+    this.setState({
+      searchedData: updatedSearchedData,
+      initialData: updatedInitialData,
+      loading: false,
+    });
+  };
 
   handleSearchBarEnter = (event) => {
     const searchData = event.target.value;
@@ -34,6 +73,14 @@ class ShoppingPage extends Component {
   };
 
   render() {
+    const loadingCSS = {
+      height: "100px",
+      margin: "30px",
+    };
+
+    // To change the loading icon behavior
+    const loadingTextCSS = { display: this.state.loading ? "block" : "none" };
+
     return (
       <div class="shopping-page">
         <Image
@@ -61,20 +108,28 @@ class ShoppingPage extends Component {
             );
           })}
         </div>
+
+        <div
+          ref={(loadingRef) => (this.loadingRef = loadingRef)}
+          style={loadingCSS}
+        >
+          <span style={loadingTextCSS}>Loading...</span>
+        </div>
       </div>
     );
   }
 
   fetchSizes = (sizeList) => {
-    debugger;
-    let arr = sizeList.map((element) => {
-      return element.title;
-    });
+    if (sizeList !== undefined) {
+      let arr = sizeList.map((element) => {
+        return element.title;
+      });
 
-    const reducer = (previousSizes, currentSize) =>
-      previousSizes + " " + currentSize;
-    const initialValue = "";
-    return arr.reduce(reducer, initialValue);
+      const reducer = (previousSizes, currentSize) =>
+        previousSizes + " " + currentSize;
+      const initialValue = "";
+      return arr.reduce(reducer, initialValue);
+    }
   };
 }
 export default ShoppingPage;
